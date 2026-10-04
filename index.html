@@ -595,10 +595,327 @@
         width: 100%;
       }
     }
+
+    /* ==========================================================================
+       PANTALLA DE BIENVENIDA / SOBRE INTERACTIVO (ENVELOPE OVERLAY)
+       ========================================================================== */
+    .envelope-overlay {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(35, 38, 33, 0.94) 0%, rgba(18, 20, 17, 0.98) 100%);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 999999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s ease;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .envelope-overlay.overlay-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .envelope-wrapper {
+      position: relative;
+      width: 320px;
+      height: 210px;
+      cursor: pointer;
+      perspective: 1000px;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      animation: envelopeFloat 3.5s ease-in-out infinite;
+    }
+
+    @keyframes envelopeFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    /* Cuerpo base del sobre */
+    .envelope {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: #EFE9DC;
+      border-radius: 12px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      overflow: visible;
+      transform-style: preserve-3d;
+    }
+
+    /* Bolsillo / Solapas laterales y frontal */
+    .envelope-pocket {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      border-radius: 12px;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    /* Solapas izquierda y derecha */
+    .envelope-pocket::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 105px 0 105px 160px;
+      border-color: transparent transparent transparent #E4DCCB;
+      z-index: 2;
+    }
+
+    .envelope-pocket::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 105px 160px 105px 0;
+      border-color: transparent #DDD3C1 transparent transparent;
+      z-index: 2;
+    }
+
+    /* Solapa inferior */
+    .envelope-bottom-flap {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 160px 115px 160px;
+      border-color: transparent transparent #D7CCB7 transparent;
+      z-index: 4;
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+    }
+
+    /* Carta interior */
+    .envelope-letter {
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      right: 20px;
+      height: 170px;
+      background: #FAF8F5;
+      border-radius: 8px;
+      border: 1px solid #E2D9CB;
+      z-index: 2;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .envelope-letter-title {
+      font-family: var(--font-title);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #2B2D2B;
+      letter-spacing: 1px;
+      margin-bottom: 2px;
+    }
+
+    .envelope-letter-names {
+      font-family: var(--font-title);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--color-gold);
+    }
+
+    /* Solapa superior interactiva con 3D */
+    .envelope-top-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 125px 160px 0 160px;
+      border-color: #ECE5D6 transparent transparent transparent;
+      transform-origin: top center;
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.2s;
+      z-index: 5;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+    }
+
+    /* Sello de cera dorado */
+    .wax-seal {
+      position: absolute;
+      top: 95px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 58px;
+      height: 58px;
+      background: radial-gradient(circle at 35% 35%, #e8d08d, #C5A059 45%, #92753a 90%);
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.4), inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+      z-index: 6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 2px solid rgba(255, 235, 175, 0.5);
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease, box-shadow 0.3s;
+    }
+
+    .wax-seal::before {
+      content: '';
+      position: absolute;
+      inset: 4px;
+      border: 1px dashed rgba(255, 248, 220, 0.5);
+      border-radius: 50%;
+    }
+
+    .wax-seal-text {
+      font-family: var(--font-title);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #3b2a0c;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+      letter-spacing: 1px;
+      pointer-events: none;
+    }
+
+    .envelope-wrapper:hover .wax-seal {
+      transform: translate(-50%, -50%) scale(1.08);
+      box-shadow: 0 6px 18px rgba(197, 160, 89, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.5);
+    }
+
+    /* Texto parpadeante debajo del sobre */
+    .envelope-prompt {
+      margin-top: 38px;
+      color: #FAF8F5;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-family: var(--font-body);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: promptPulse 2s ease-in-out infinite;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    @keyframes promptPulse {
+      0%, 100% {
+        opacity: 0.6;
+        transform: translateY(0);
+      }
+      50% {
+        opacity: 1;
+        transform: translateY(3px);
+      }
+    }
+
+    /* ESTADO ABIERTO DEL SOBRE (ANIMACIÓN) */
+    .envelope-wrapper.is-opening .wax-seal {
+      transform: translate(-50%, -50%) scale(0.6) rotate(15deg);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .envelope-wrapper.is-opening .envelope-top-flap {
+      transform: rotateX(180deg);
+      z-index: 1;
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.35s 0.25s;
+    }
+
+    .envelope-wrapper.is-opening .envelope-letter {
+      transform: translateY(-45px);
+      transition-delay: 0.3s;
+    }
+
+    .envelope-wrapper.is-opening ~ .envelope-prompt {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    @media (max-width: 480px) {
+      .envelope-wrapper {
+        width: 290px;
+        height: 190px;
+      }
+      .envelope-pocket::before {
+        border-width: 95px 0 95px 145px;
+      }
+      .envelope-pocket::after {
+        border-width: 95px 145px 95px 0;
+      }
+      .envelope-bottom-flap {
+        border-width: 0 145px 105px 145px;
+      }
+      .envelope-top-flap {
+        border-width: 115px 145px 0 145px;
+      }
+      .wax-seal {
+        top: 85px;
+        width: 52px;
+        height: 52px;
+      }
+      .wax-seal-text {
+        font-size: 0.95rem;
+      }
+    }
   </style>
 </head>
 
 <body>
+
+  <!-- =========================================================================
+       PANTALLA DE BIENVENIDA CON SOBRE INTERACTIVO
+       ========================================================================= -->
+  <div id="envelope-overlay" class="envelope-overlay" onclick="openWeddingEnvelope()">
+    <div class="envelope-wrapper" id="envelope-element" onclick="openWeddingEnvelope(event)">
+      <div class="envelope">
+        <!-- Solapa superior animada con 3D -->
+        <div class="envelope-top-flap"></div>
+
+        <!-- Sello de cera -->
+        <div class="wax-seal" id="wax-seal-btn" title="Abrir invitación">
+          <span class="wax-seal-text" id="cfg-seal-monogram">A & A</span>
+        </div>
+
+        <!-- Carta que asoma al abrir -->
+        <div class="envelope-letter">
+          <span class="envelope-letter-title">Nuestra Boda</span>
+          <span class="envelope-letter-names">Adrián & Ana Laura</span>
+        </div>
+
+        <!-- Solapas laterales e inferior (bolsillo frontal) -->
+        <div class="envelope-pocket">
+          <div class="envelope-bottom-flap"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Indicador para pulsar -->
+    <div class="envelope-prompt" onclick="openWeddingEnvelope(event)">
+      <span>✉</span>
+      <span>Toca el sello para abrir</span>
+    </div>
+  </div>
 
   <div class="page-container">
 
@@ -607,7 +924,7 @@
     <!-- ======================================================================= -->
     <header class="hero-section">
       <!-- Monograma o iniciales -->
-      <div class="monogram-badge" id="cfg-monogram">A & S</div>
+      <div class="monogram-badge" id="cfg-monogram">A & A</div>
 
       <p class="hero-subtitle">¡Nos Casamos!</p>
 
@@ -849,6 +1166,7 @@
       const setAttr = (id, attr, val) => { const el = document.getElementById(id); if (el) el.setAttribute(attr, val); };
 
       setHTML('cfg-monogram', WEDDING_CONFIG.monogram);
+      setHTML('cfg-seal-monogram', WEDDING_CONFIG.monogram);
       setHTML('cfg-couple-names', WEDDING_CONFIG.coupleNames);
       setHTML('cfg-date-badge-text', WEDDING_CONFIG.dateBadgeText);
       setHTML('cfg-quote', WEDDING_CONFIG.quote);
@@ -865,6 +1183,37 @@
 
     // Aplicar la configuración al cargar el DOM
     applyConfigToPage();
+
+    /**
+     * =======================================================================
+     * INTERACCIÓN Y APERTURA DEL SOBRE DE BIENVENIDA
+     * =======================================================================
+     */
+    let envelopeOpened = false;
+
+    function openWeddingEnvelope(e) {
+      if (e && e.stopPropagation) e.stopPropagation();
+      if (envelopeOpened) return;
+      envelopeOpened = true;
+
+      const envelopeElement = document.getElementById('envelope-element');
+      const envelopeOverlay = document.getElementById('envelope-overlay');
+
+      if (envelopeElement) {
+        envelopeElement.classList.add('is-opening');
+      }
+
+      // Desvanecer el overlay completo tras la apertura de la solapa
+      setTimeout(() => {
+        if (envelopeOverlay) {
+          envelopeOverlay.classList.add('overlay-hidden');
+          // Eliminar del flujo tras completar la transición de fade-out
+          setTimeout(() => {
+            envelopeOverlay.style.display = 'none';
+          }, 800);
+        }
+      }, 900);
+    }
 
     /**
      * =======================================================================
