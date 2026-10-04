@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuestra Boda | Adrián & Ana Laura</title>
+  <meta name="description"
+    content="Te invitamos a celebrar nuestra boda. Todos los detalles, cuenta atrás, ubicación y confirmación de asistencia aquí.">
+
+  <!-- ================================================================= -->
+  <!-- FUENTES DE GOOGLE FONTS                                           -->
+  <!-- 'Cormorant Garamond' & 'Playfair Display' para títulos elegantes  -->
+  <!-- 'Montserrat' para textos limpios y legibles                       -->
+  <!-- ================================================================= -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       VARIABLES DE COLOR Y DISEÑO (FÁCILMENTE EDITABLES)
+       ========================================================================== */
+    :root {
+      /* Paleta de colores para bodas */
+      --bg-main: #FAF8F5;
+      /* Fondo principal crema cálido */
+      --bg-card: #FFFFFF;
+      /* Fondo de tarjetas */
+      --bg-soft: #F3EFEA;
+      /* Fondo secundario suave */
+      --color-gold: #C5A059;
+      /* Dorado elegante */
+      --color-gold-hover: #b08d48;
+      /* Dorado al pasar el cursor */
+      --color-gold-light: #F7EFE1;
+      /* Fondo dorado muy suave */
+      --color-green: #5D705C;
+      /* Verde eucalipto suave */
+      --color-green-light: #EBF1EA;
+      /* Verde claro */
+      --text-dark: #2B2D2B;
+      /* Texto principal */
+      --text-muted: #6B726C;
+      /* Texto secundario */
+      --border-color: #E8E2D8;
+      /* Bordes sutiles */
+
+      /* Tipografías */
+      --font-title: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+      --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      /* Sombras y efectos */
+      --shadow-sm: 0 4px 12px rgba(43, 45, 43, 0.05);
+      --shadow-md: 0 10px 30px rgba(43, 45, 43, 0.08);
+      --shadow-lg: 0 18px 45px rgba(197, 160, 89, 0.15);
+      --radius-sm: 10px;
+      --radius-md: 20px;
+      --radius-lg: 32px;
+      --transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* Reset y Estilos Base */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-main);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Contenedor principal responsive */
+    .page-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px 60px 20px;
+    }
+
+    /* ==========================================================================
+       HERO SECTION (CABECERA)
+       ========================================================================== */
+    .hero-section {
+      text-align: center;
+      padding: 60px 15px 40px 15px;
+      position: relative;
+    }
+
+    .monogram-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 1px solid var(--color-gold);
+      color: var(--color-gold);
+      font-family: var(--font-title);
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      margin-bottom: 24px;
+      background: #FFFFFF;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-subtitle {
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--color-green);
+      margin-bottom: 12px;
+    }
+
+    .hero-names {
+      font-family: var(--font-title);
+      font-size: clamp(2.8rem, 8vw, 4.8rem);
+      font-weight: 600;
+      color: var(--text-dark);
+      line-height: 1.15;
+      margin-bottom: 15px;
+    }
+
+    .hero-names span {
+      display: inline-block;
+      font-style: italic;
+      color: var(--color-gold);
+      font-weight: 400;
+      padding: 0 8px;
+    }
+
+    .hero-quote {
+      font-family: var(--font-title);
+      font-size: clamp(1.15rem, 3.5vw, 1.45rem);
+      font-style: italic;
+      color: var(--text-muted);
+      max-width: 580px;
+      margin: 0 auto 35px auto;
+      line-height: 1.5;
+    }
+
+    /* Marco de foto principal */
+    .hero-image-wrapper {
+      position: relative;
+      max-width: 680px;
+      margin: 0 auto 40px auto;
+      border-radius: var(--radius-lg);
+      padding: 12px;
+      background: #FFFFFF;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-color);
+    }
+
+    .hero-image-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: calc(var(--radius-lg) - 10px);
+      pointer-events: none;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 440px;
+      object-fit: cover;
+      border-radius: calc(var(--radius-lg) - 6px);
+      display: block;
+      transition: var(--transition);
+    }
+
+    .hero-date-badge {
+      position: absolute;
+      bottom: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #FFFFFF;
+      padding: 12px 30px;
+      border-radius: 50px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      white-space: nowrap;
+      z-index: 2;
+    }
+
+    .hero-date-badge .date-text {
+      font-family: var(--font-title);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      letter-spacing: 1px;
+    }
+
+    /* ==========================================================================
+       SECCIONES Y TARJETAS GLOBALES
+       ========================================================================== */
+    .section-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 40px 30px;
+      margin-top: 50px;
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: rgba(197, 160, 89, 0.4);
+    }
+
+    .section-tag {
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-gold);
+      background: var(--color-gold-light);
+      padding: 6px 16px;
+      border-radius: 30px;
+      margin-bottom: 15px;
+    }
+
+    .section-title {
+      font-family: var(--font-title);
+      font-size: clamp(2rem, 5vw, 2.6rem);
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+
+    .section-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto 30px auto;
+    }
+
+    /* ==========================================================================
+       CUENTA ATRÁS (COUNTDOWN)
+       ========================================================================== */
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .countdown-item {
+      background: var(--bg-soft);
+      border: 1px solid var(--border-color);
+      padding: 20px 10px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+
+    .countdown-item:hover {
+      transform: translateY(-4px);
+      border-color: var(--color-gold);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .countdown-number {
+      font-family: var(--font-title);
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 700;
+      color: var(--color-gold);
+      line-height: 1;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .countdown-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .countdown-finished-msg {
+      display: none;
+      font-family: var(--font-title);
+      font-size: 2rem;
+      color: var(--color-green);
+      font-weight: 700;
+      padding: 20px;
+    }
+
+    /* ==========================================================================
+       UBICACIÓN & CÓMO LLEGAR
+       ========================================================================== */
+    .location-details {
+      background: var(--bg-soft);
+      padding: 24px;
+      border-radius: var(--radius-sm);
+      max-width: 540px;
+      margin: 0 auto 28px auto;
+      border: 1px solid var(--border-color);
+    }
+
+    .location-place-name {
+      font-family: var(--font-title);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    .location-address {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .location-schedule {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #FFFFFF;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-green);
+    }
+
+    /* ==========================================================================
+       REGALO DE BODAS / IBAN
+       ========================================================================== */
+    .iban-box {
+      background: linear-gradient(145deg, #FFFFFF, var(--bg-soft));
+      border: 2px dashed var(--color-gold);
+      border-radius: var(--radius-md);
+      padding: 30px 20px;
+      max-width: 540px;
+      margin: 0 auto 20px auto;
+      position: relative;
+    }
+
+    .iban-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--color-gold);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .iban-code-container {
+      background: #FFFFFF;
+      padding: 14px 18px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .iban-code {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: clamp(1.05rem, 3.8vw, 1.3rem);
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--text-dark);
+      word-break: break-all;
+    }
+
+    .copy-status-msg {
+      font-size: 0.85rem;
+      color: var(--color-green);
+      font-weight: 600;
+      min-height: 22px;
+      margin-top: 8px;
+      transition: var(--transition);
+      opacity: 0;
+    }
+
+    .copy-status-msg.active {
+      opacity: 1;
+    }
+
+    /* ==========================================================================
+       BOTONES E INTERACCIONES
+       ========================================================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 28px;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 50px;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+      outline: none;
+    }
+
+    .btn-gold {
+      background: var(--color-gold);
+      color: #FFFFFF;
+      box-shadow: 0 4px 15px rgba(197, 160, 89, 0.35);
+    }
+
+    .btn-gold:hover,
+    .btn-gold:focus {
+      background: var(--color-gold-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(197, 160, 89, 0.45);
+      color: #FFFFFF;
+    }
+
+    .btn-green {
+      background: var(--color-green);
+      color: #FFFFFF;
+      box-shadow: 0 4px 15px rgba(93, 112, 92, 0.3);
+    }
+
+    .btn-green:hover,
+    .btn-green:focus {
+      background: #4B5B4A;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(93, 112, 92, 0.4);
+      color: #FFFFFF;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--color-gold);
+      border: 1.5px solid var(--color-gold);
+    }
+
+    .btn-outline:hover {
+      background: var(--color-gold);
+      color: #FFFFFF;
+      transform: translateY(-2px);
+    }
+
+    .btn-copy {
+      padding: 10px 20px;
+      font-size: 0.85rem;
+    }
+
+    .btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      transition: transform 0.2s ease;
+    }
+
+    .btn:hover svg {
+      transform: scale(1.1);
+    }
+
+    /* ==========================================================================
+       CRONOGRAMA / TIMELINE
+       ========================================================================== */
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 16px;
+      margin-top: 25px;
+    }
+
+    .timeline-item {
+      background: var(--bg-soft);
+      padding: 20px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .timeline-item:hover {
+      transform: translateY(-3px);
+      border-color: var(--color-gold);
+    }
+
+    .timeline-time {
+      font-family: var(--font-title);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--color-gold);
+      margin-bottom: 4px;
+    }
+
+    .timeline-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+    .timeline-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       PIE DE PÁGINA (FOOTER)
+       ========================================================================== */
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .footer-heart {
+      color: #D9534F;
+      display: inline-block;
+      animation: heartbeat 1.5s infinite ease-in-out;
+    }
+
+    @keyframes heartbeat {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.2);
+      }
+    }
+
+    /* ==========================================================================
+       RESPONSIVE DESIGN (MÓVILES Y PANTALLAS PEQUEÑAS)
+       ========================================================================== */
+    @media (max-width: 640px) {
+      .page-container {
+        padding: 0 15px 40px 15px;
+      }
+
+      .hero-section {
+        padding: 40px 5px 30px 5px;
+      }
+
+      .hero-image {
+        height: 320px;
+      }
+
+      .section-card {
+        padding: 30px 18px;
+        margin-top: 35px;
+      }
+
+      .countdown-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .iban-code-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page-container">
+
+    <!-- ======================================================================= -->
+    <!-- 1. CABECERA / HERO SECTION (EDITAR NOMBRES, FOTO Y FRASE AQUÍ)          -->
+    <!-- ======================================================================= -->
+    <header class="hero-section">
+      <!-- Monograma o iniciales -->
+      <div class="monogram-badge" id="cfg-monogram">A & S</div>
+
+      <p class="hero-subtitle">¡Nos Casamos!</p>
+
+      <!-- Nombres de los novios -->
+      <h1 class="hero-names" id="cfg-couple-names">Adrián <span>&</span> Ana Laura</h1>
+
+      <!-- Frase emotiva / bienvenida -->
+      <p class="hero-quote" id="cfg-quote">
+        «Hay momentos en la vida que son especiales por sí solos, pero compartirlo con quienes más queremos los hace
+        inolvidables.»
+      </p>
+
+      <!-- Foto destacada de los novios -->
+      <div class="hero-image-wrapper">
+        <!-- Puedes sustituir la URL del atributo 'src' por la foto que desees -->
+        <img id="cfg-hero-photo"
+          src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop"
+          alt="Adrián y AnaLaura - Boda" class="hero-image" loading="lazy">
+        <!-- Distintivo de la fecha -->
+        <div class="hero-date-badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#C5A059">
+            <path
+              d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z" />
+          </svg>
+          <span class="date-text" id="cfg-date-badge-text">25 de Septiembre, 2027</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ======================================================================= -->
+    <!-- 2. CUENTA ATRÁS INTERACTIVA EN TIEMPO REAL                              -->
+    <!-- ======================================================================= -->
+    <section class="section-card" id="countdown-section">
+      <span class="section-tag">Cuenta Atrás</span>
+      <h2 class="section-title">Solo falta...</h2>
+      <p class="section-desc">Estamos contando cada segundo para celebrar este momento contigo.</p>
+
+      <!-- Grid con los contadores de tiempo -->
+      <div class="countdown-grid" id="countdown-timer">
+        <div class="countdown-item">
+          <span class="countdown-number" id="cd-days">00</span>
+          <span class="countdown-label">Días</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="cd-hours">00</span>
+          <span class="countdown-label">Horas</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="cd-minutes">00</span>
+          <span class="countdown-label">Minutos</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="cd-seconds">00</span>
+          <span class="countdown-label">Segundos</span>
+        </div>
+      </div>
+
+      <!-- Mensaje mostrado si la fecha ya ha pasado -->
+      <div class="countdown-finished-msg" id="cd-finished-msg">
+        🎉 ¡El gran día ha llegado! 🎉
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- 3. PROGRAMA DEL EVENTO (CRONOGRAMA)                                     -->
+    <!-- ======================================================================= -->
+    <section class="section-card">
+      <span class="section-tag">El Gran Día</span>
+      <h2 class="section-title">Programa del Evento</h2>
+      <p class="section-desc">Queremos que disfrutes de cada instante junto a nosotros.</p>
+
+      <div class="timeline-grid">
+        <div class="timeline-item">
+          <div class="timeline-time">18:00</div>
+          <div class="timeline-title">Ceremonia</div>
+          <div class="timeline-desc">Jardines de la Finca</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">19:30</div>
+          <div class="timeline-title">Cóctel & Brindis</div>
+          <div class="timeline-desc">Música en directo</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">21:00</div>
+          <div class="timeline-title">Banquete</div>
+          <div class="timeline-desc">Salón Principal</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">23:30</div>
+          <div class="timeline-title">Fiesta & Baile</div>
+          <div class="timeline-desc">Hasta que el cuerpo aguante</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- 4. UBICACIÓN Y CÓMO LLEGAR                                              -->
+    <!-- ======================================================================= -->
+    <section class="section-card">
+      <span class="section-tag">Ubicación</span>
+      <h2 class="section-title">¿Dónde lo celebramos?</h2>
+      <p class="section-desc">Hemos elegido un lugar mágico para nuestro enlace.</p>
+
+      <div class="location-details">
+        <h3 class="location-place-name" id="cfg-location-name">Finca El Olivar</h3>
+        <p class="location-address" id="cfg-location-address">Carretera de Colmenar Viejo, Km 28, Madrid</p>
+        <div class="location-schedule">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#5D705C">
+            <path
+              d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
+          </svg>
+          <span id="cfg-location-hour">Inicio: 18:00 h</span>
+        </div>
+      </div>
+
+      <!-- Botón para abrir Google Maps -->
+      <a id="cfg-maps-link" href="https://maps.google.com/?q=Finca+El+Olivar+Madrid" target="_blank"
+        rel="noopener noreferrer" class="btn btn-green">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+        </svg>
+        Cómo llegar en Google Maps
+      </a>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- 5. REGALO DE BODAS / NÚMERO DE CUENTA (IBAN)                            -->
+    <!-- ======================================================================= -->
+    <section class="section-card">
+      <span class="section-tag">Regalo de Bodas</span>
+      <h2 class="section-title">El Mejor Regalo</h2>
+      <p class="section-desc">
+        El mejor regalo es tu compañía en nuestro día especial. No obstante, si deseas hacernos un detalle para nuestra
+        luna de miel, ponemos a tu disposición nuestra cuenta bancaria:
+      </p>
+
+      <div class="iban-box">
+        <div class="iban-label">Número de Cuenta (IBAN)</div>
+
+        <div class="iban-code-container">
+          <!-- Número IBAN configurable -->
+          <span class="iban-code" id="cfg-iban-text">ES91 2100 0418 4502 0005 1332</span>
+
+          <!-- Botón de Copiar IBAN -->
+          <button type="button" class="btn btn-gold btn-copy" id="copy-iban-btn" onclick="copyIbanToClipboard()">
+            <svg viewBox="0 0 24 24" id="copy-btn-icon">
+              <path
+                d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span id="copy-btn-label">Copiar IBAN</span>
+          </button>
+        </div>
+
+        <p class="copy-status-msg" id="copy-status">✓ ¡Número de cuenta copiado en el portapapeles!</p>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- 6. CONFIRMACIÓN DE ASISTENCIA (RSVP)                                    -->
+    <!-- ======================================================================= -->
+    <section class="section-card">
+      <span class="section-tag">Confirmación</span>
+      <h2 class="section-title">¿Nos acompañas?</h2>
+      <p class="section-desc">
+        Por favor, confirma tu asistencia antes del <b>1 de Julio de 2027</b> para que podamos organizar todos los
+        detalles.
+      </p>
+
+      <!-- Botón de WhatsApp para confirmar asistencia -->
+      <a id="cfg-rsvp-whatsapp"
+        href="https://wa.me/34600000000?text=%C2%A1Hola!%20Confirmo%20mi%20asistencia%20a%20vuestra%20boda."
+        target="_blank" rel="noopener noreferrer" class="btn btn-gold">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.41a8.21 8.21 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24z" />
+        </svg>
+        Confirmar Asistencia por WhatsApp
+      </a>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- PIE DE PÁGINA                                                           -->
+    <!-- ======================================================================= -->
+    <footer class="footer">
+      <p>Hecho con <span class="footer-heart">♥</span> para celebrar nuestro amor</p>
+      <p style="margin-top: 5px; font-size: 0.8rem; color: #9A9E99;">Adrián & Ana Laura • 2027</p>
+    </footer>
+
+  </div>
+
+  <!-- =========================================================================
+       SCRIPTS Y CONFIGURACIÓN (FÁCIL DE MODIFICAR SIN CONOCIMIENTOS TÉCNICOS)
+       ========================================================================= -->
+  <script>
+    /**
+     * =======================================================================
+     * PANEL DE CONFIGURACIÓN PERSONALIZABLE
+     * Modifica los valores de aquí abajo para personalizar toda la invitación.
+     * Al cambiar estos datos, la página se actualizará automáticamente.
+     * =======================================================================
+     */
+    const WEDDING_CONFIG = {
+      // Fecha y hora del evento: Año, Mes (1-12), Día, Hora (0-23), Minuto (0-59)
+      // Ejemplo: 25 de septiembre de 2027 a las 18:00
+      targetDate: new Date(2027, 8, 25, 18, 0, 0), // Nota: Mes 8 = Septiembre en JavaScript (enero es 0)
+
+      // Iniciales / Monograma y Nombres de los novios
+      monogram: "A & A",
+      coupleNames: "Adrián <span>&</span> Ana Laura",
+      dateBadgeText: "25 de Septiembre, 2027",
+
+      // Frase emotiva o de bienvenida
+      quote: "«Hay momentos en la vida que son especiales por sí solos, pero compartirlo con quienes más queremos los hace inolvidables.»",
+
+      // URL de la foto principal (reemplazable por cualquier imagen propia)
+      heroPhotoUrl: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop",
+
+      // Lugar y detalles de la celebración
+      locationName: "Finca El Olivar",
+      locationAddress: "Carretera de Colmenar Viejo, Km 28, Madrid",
+      locationHour: "Inicio: 18:00 h",
+      googleMapsUrl: "https://maps.google.com/?q=Finca+El+Olivar+Madrid",
+
+      // Cuenta bancaria para el regalo (IBAN)
+      iban: "ES91 2100 0418 4502 0005 1332",
+
+      // WhatsApp para confirmación de asistencia (código de país + número)
+      whatsappPhone: "34600000000",
+      whatsappMessage: "¡Hola! Confirmo mi asistencia a vuestra boda."
+    };
+
+    /**
+     * Sincroniza la configuración con el HTML al cargar la página
+     */
+    function applyConfigToPage() {
+      const setHTML = (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html; };
+      const setAttr = (id, attr, val) => { const el = document.getElementById(id); if (el) el.setAttribute(attr, val); };
+
+      setHTML('cfg-monogram', WEDDING_CONFIG.monogram);
+      setHTML('cfg-couple-names', WEDDING_CONFIG.coupleNames);
+      setHTML('cfg-date-badge-text', WEDDING_CONFIG.dateBadgeText);
+      setHTML('cfg-quote', WEDDING_CONFIG.quote);
+      setAttr('cfg-hero-photo', 'src', WEDDING_CONFIG.heroPhotoUrl);
+      setHTML('cfg-location-name', WEDDING_CONFIG.locationName);
+      setHTML('cfg-location-address', WEDDING_CONFIG.locationAddress);
+      setHTML('cfg-location-hour', WEDDING_CONFIG.locationHour);
+      setAttr('cfg-maps-link', 'href', WEDDING_CONFIG.googleMapsUrl);
+      setHTML('cfg-iban-text', WEDDING_CONFIG.iban);
+
+      const whatsappUrl = `https://wa.me/${WEDDING_CONFIG.whatsappPhone}?text=${encodeURIComponent(WEDDING_CONFIG.whatsappMessage)}`;
+      setAttr('cfg-rsvp-whatsapp', 'href', whatsappUrl);
+    }
+
+    // Aplicar la configuración al cargar el DOM
+    applyConfigToPage();
+
+    /**
+     * =======================================================================
+     * LÓGICA DE LA CUENTA ATRÁS EN TIEMPO REAL
+     * =======================================================================
+     */
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = WEDDING_CONFIG.targetDate.getTime() - now;
+
+      const daysEl = document.getElementById('cd-days');
+      const hoursEl = document.getElementById('cd-hours');
+      const minutesEl = document.getElementById('cd-minutes');
+      const secondsEl = document.getElementById('cd-seconds');
+      const timerContainer = document.getElementById('countdown-timer');
+      const finishedMsg = document.getElementById('cd-finished-msg');
+
+      if (distance < 0) {
+        // La fecha ya ha pasado
+        if (timerContainer) timerContainer.style.display = 'none';
+        if (finishedMsg) finishedMsg.style.display = 'block';
+        return;
+      }
+
+      // Cálculo de días, horas, minutos y segundos
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Formatear con 2 dígitos (ej: 05)
+      if (daysEl) daysEl.innerText = String(days).padStart(2, '0');
+      if (hoursEl) hoursEl.innerText = String(hours).padStart(2, '0');
+      if (minutesEl) minutesEl.innerText = String(minutes).padStart(2, '0');
+      if (secondsEl) secondsEl.innerText = String(seconds).padStart(2, '0');
+    }
+
+    // Iniciar cuenta atrás inmediatamente y actualizar cada segundo
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    /**
+     * =======================================================================
+     * LÓGICA PARA COPIAR EL IBAN AL PORTAPAPELES
+     * =======================================================================
+     */
+    function copyIbanToClipboard() {
+      const ibanClean = (WEDDING_CONFIG.iban || document.getElementById('cfg-iban-text').innerText).trim();
+      const copyBtnLabel = document.getElementById('copy-btn-label');
+      const statusMsg = document.getElementById('copy-status');
+      const copyBtn = document.getElementById('copy-iban-btn');
+
+      const setCopiedUI = () => {
+        if (copyBtnLabel) copyBtnLabel.innerText = "¡Copiado!";
+        if (statusMsg) statusMsg.classList.add('active');
+        if (copyBtn) copyBtn.style.background = "var(--color-green)";
+
+        // Restaurar estado visual tras 3 segundos
+        setTimeout(() => {
+          if (copyBtnLabel) copyBtnLabel.innerText = "Copiar IBAN";
+          if (statusMsg) statusMsg.classList.remove('active');
+          if (copyBtn) copyBtn.style.background = "";
+        }, 3000);
+      };
+
+      // Método moderno de portapapeles
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(ibanClean)
+          .then(setCopiedUI)
+          .catch(() => fallbackCopy(ibanClean, setCopiedUI));
+      } else {
+        fallbackCopy(ibanClean, setCopiedUI);
+      }
+    }
+
+    // Método de respaldo para compatibilidad universal (iframes / embed de Google Sites)
+    function fallbackCopy(text, callback) {
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      textArea.style.position = "fixed";
+      textArea.style.left = "-999999px";
+      textArea.style.top = "-999999px";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+
+      try {
+        document.execCommand('copy');
+        if (callback) callback();
+      } catch (err) {
+        console.error('Error al copiar:', err);
+      } finally {
+        document.body.removeChild(textArea);
+      }
+    }
+  </script>
+</body>
+
+</html>
